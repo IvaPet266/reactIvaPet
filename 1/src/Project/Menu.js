@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { useScreen } from './Screens/ProviderScreen'
+import newPostIcon_normal from './imgs/newPostIcon-normal.svg'
+import searchIcon_normal from './imgs/searchIcon-normal.svg'
+import profileIcon_normal from './imgs/profileIcon-normal.svg'
 
 export default function Menu( props ) {
   const [ lang, setLang ] = useState( 'rus' )
@@ -18,36 +22,30 @@ export default function Menu( props ) {
 }
   return (
     <div id="menu" style={{ background: "#DBC1FF" }}>
-      <Button pprops={ props } onClick={ () => props.setScreen( "main" ) } id="main" >Main</Button>
-      <Button pprops={ props } onClick={ () => props.setScreen( "contests" ) } id="contests" >Contents</Button>
-      <Button pprops={ props } onClick={ () => props.setScreen( "discussion" ) } id="discussion" >Discussion</Button>
-      <Button pprops={ props } onClick={ () => props.setScreen( 'newPost' ) } id='newPost' >+</Button>
-      <Button pprops={ props } onClick={ () => props.setScreen( 'search' ) } id='search' >Search</Button>
-      <Button pprops={ props } onClick={ () => props.setScreen( 'profile' ) } id='profile' >Profile</Button>
+      <Button onClick={ () => props.setScreen( "main" ) } id="main" style_={ false } >Main</Button>
+      <Button onClick={ () => props.setScreen( "contests" ) } id="contests" style_={ false } >Contests</Button>
+      <Button onClick={ () => props.setScreen( "discussion" ) } id="discussion" style_={ false } >Discussion</Button>
+      <Button onClick={ () => props.setScreen( "newPost" ) } id="newPost" style_={ true } ><img src={ newPostIcon_normal } alt="+" /></Button>
+      <Button onClick={ () => props.setScreen( "search" ) } id="search" style_={ true } ><img src={ searchIcon_normal } alt="search"/></Button>
+      <Button onClick={ () => props.setScreen( "profile" ) } id="profile" style_={ true } ><img src={ profileIcon_normal } alt="profile"/></Button>
     </div>
   )
 }
 
 export function Button( props ) {
-  const [switched, setSwitched] = useState( false )
 
-  const change = ( inst ) => {
-    const menu_btns = document.getElementById( "menu" ).children
-    for (const child in menu_btns) {
-      if ( child.id != props.id ) {
-        child.this.props.setSwitched( false ); 
-      } else { child.this.props.setSwitched( true ) }
-    }
-  }
+  const {screen, setScreen} = useScreen()
 
-  let className = ''
-  switch (switched) {
-    case true: className = "btn-dark"
-    default: className = "btn-normal"
+  let className
+  switch (screen) {
+    case props.id: className = "btn-dark"; break
+    default: className = "btn-normal"; break
   }
+  console.log(props.style_);
+  if (props.style_ == true) {className = "icon-btn-normal"} 
   
   return (
-    <button onClick={() => change( true ) } className={ className }>{ props.children }</button>
+    <button onClick={() => setScreen(props.id)} className={ className }>{ props.children }</button>
   )
 }
 
