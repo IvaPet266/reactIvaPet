@@ -4,6 +4,7 @@ import newPostIcon_normal from './imgs/newPostIcon-normal.svg'
 import searchIcon_normal from './imgs/searchIcon-normal.svg'
 import profileIcon_normal from './imgs/profileIcon-normal.svg'
 
+
 export default function Menu( props ) {
   const [ lang, setLang ] = useState( 'rus' )
   const text = {
@@ -21,7 +22,7 @@ export default function Menu( props ) {
     }
 }
   return (
-    <div id="menu" style={{ background: "#DBC1FF" }}>
+    <div id="menu" style={{ background: "#DBC1FF", width: "100%", position: "absolute", top: "0px", left: "0px" }}>
       <Button onClick={ () => props.setScreen( "main" ) } id="main" style_={ false } >Main</Button>
       <Button onClick={ () => props.setScreen( "contests" ) } id="contests" style_={ false } >Contests</Button>
       <Button onClick={ () => props.setScreen( "discussion" ) } id="discussion" style_={ false } >Discussion</Button>
@@ -31,6 +32,8 @@ export default function Menu( props ) {
     </div>
   )
 }
+
+
 
 export function Button( props ) {
 
