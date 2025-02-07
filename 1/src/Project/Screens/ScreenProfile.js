@@ -1,11 +1,12 @@
 import React from 'react'
+import BaseScreen from './BaseScreen'
 
 export default function ScreenProfile( props ) {
 
   return (
-    <>
-    { props.children }
-    <div style={{ position: "absolute", background: "white" }}>ScreenProfile</div>
-    </>
+    <BaseScreen>
+      { props.children }
+      <div style={{ background: "white" }}>ScreenProfile</div>
+    </BaseScreen>
   )
 }

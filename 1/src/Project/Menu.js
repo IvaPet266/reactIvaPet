@@ -22,13 +22,13 @@ export default function Menu( props ) {
     }
 }
   return (
-    <div id="menu" style={{ background: "#DBC1FF", width: "100%", position: "absolute", top: "0px", left: "0px" }}>
+    <div id="menu" style={{ background: "#DBC1FF", padding: ""}}>
       <Button onClick={ () => props.setScreen( "main" ) } id="main" style_={ false } >Main</Button>
       <Button onClick={ () => props.setScreen( "contests" ) } id="contests" style_={ false } >Contests</Button>
       <Button onClick={ () => props.setScreen( "discussion" ) } id="discussion" style_={ false } >Discussion</Button>
-      <Button onClick={ () => props.setScreen( "newPost" ) } id="newPost" style_={ true } ><img src={ newPostIcon_normal } alt="+" /></Button>
-      <Button onClick={ () => props.setScreen( "search" ) } id="search" style_={ true } ><img src={ searchIcon_normal } alt="search"/></Button>
-      <Button onClick={ () => props.setScreen( "profile" ) } id="profile" style_={ true } ><img src={ profileIcon_normal } alt="profile"/></Button>
+      <Button onClick={ () => props.setScreen( "newPost" ) } id="newPost" style_={ true } ><Image src_={ newPostIcon_normal } /></Button>
+      <Button onClick={ () => props.setScreen( "search" ) } id="search" style_={ true } ><Image src_={ searchIcon_normal } /></Button>
+      <Button onClick={ () => props.setScreen( "profile" ) } id="profile" style_={ true } ><Image src_={ profileIcon_normal } /></Button>
     </div>
   )
 }
@@ -52,4 +52,9 @@ export function Button( props ) {
   )
 }
 
+export function Image( props ) {
+  return (
+    <img src={ props.src_ } style={{ height: '70px', width: '70px', margin: 0, padding: 0, stroke: "none" }}></img>
+  )
+}
 

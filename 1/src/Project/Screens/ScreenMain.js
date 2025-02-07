@@ -1,11 +1,12 @@
 import React from 'react'
+import BaseScreen from './BaseScreen'
 
 export default function ScreenMain( props ) {
 
   return (
-    <>
-    { props.children }
-    <div style={{ position: "absolute", background:"wheat" }}>ScreenMain</div>
-    </>
+    <BaseScreen>
+      { props.children }
+      <div style={{ background:"wheat" }}>ScreenMain</div>
+    </BaseScreen>
   )
 }

@@ -1,11 +1,12 @@
 import React from 'react'
+import BaseScreen from './BaseScreen'
 
 export default function ScreenContests( props ) {
 
   return (
-    <>
-    { props.children }
-    <div style={{ position: "absolute", background:"grey" }}>ScreenContests</div>
-    </>
+    <BaseScreen>
+      { props.children }
+      <div style={{background:"grey"}}>ScreenContests</div>
+    </BaseScreen>
   )
 }

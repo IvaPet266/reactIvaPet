@@ -1,11 +1,12 @@
 import React from 'react'
+import BaseScreen from './BaseScreen'
 
 export default function ScreenDiscussion( props ) {
 
   return (
-    <>
+    <BaseScreen>
     { props.children }
-    <div style={{ position: "absolute", background:"orange" }}>ScreenDiscussion</div>
-    </>
+    <div style={{ background:"orange" }}>ScreenDiscussion</div>
+    </BaseScreen>
   )
 }
