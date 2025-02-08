@@ -4,7 +4,7 @@ import BaseScreen from './BaseScreen'
 export default function ScreenDiscussion( props ) {
 
   return (
-    <BaseScreen>
+    <BaseScreen background={ "orange" }>
     { props.children }
     <div style={{ background:"orange" }}>ScreenDiscussion</div>
     </BaseScreen>

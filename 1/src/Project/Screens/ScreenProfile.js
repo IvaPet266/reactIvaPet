@@ -4,7 +4,7 @@ import BaseScreen from './BaseScreen'
 export default function ScreenProfile( props ) {
 
   return (
-    <BaseScreen>
+    <BaseScreen background={ "white" }>
       { props.children }
       <div style={{ background: "white" }}>ScreenProfile</div>
     </BaseScreen>
