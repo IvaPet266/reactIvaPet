@@ -68,3 +68,26 @@ img {
   }
 
 }
+
+.card-text {
+  padding: 7.5px;
+  position: absolute;
+  bottom: 5px;
+  filter: blur( 50px );
+  transition: filter 250ms ease-out;
+}
+
+.card-text:hover {
+  filter: none
+}
+
+.card-image {
+  background: grey;
+  width: 100%;
+  height: 100%;
+  transition: all 250ms ease-out;
+}
+
+.card-image:hover {
+  transform: scale( 0.9 )
+}

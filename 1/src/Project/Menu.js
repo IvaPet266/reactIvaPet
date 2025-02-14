@@ -44,7 +44,7 @@ export function Button( props ) {
     case props.id: className = "btn-dark"; break
     default: className = "btn-normal"; break
   }
-  console.log(props.style_);
+  
   if (props.style_ == true) {className = "icon-btn-normal"} 
   
   return (
