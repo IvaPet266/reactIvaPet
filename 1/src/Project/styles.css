@@ -44,14 +44,14 @@
   color: #fff;
 }
 
-img {
+/* img {
   height: 70px;
   width: 70px;
   background: #DBC1FF;
   border: none;
-  margin: 8px;
+   margin: 8px; 
   transition: all 300ms ease-out;
-}
+} */
 
 .icon-btn-normal {
   height: 70px;
@@ -70,24 +70,37 @@ img {
 }
 
 .card-text {
-  padding: 7.5px;
+  padding: 7px;
   position: absolute;
   bottom: 5px;
   filter: blur( 50px );
   transition: filter 250ms ease-out;
+  z-index: 1;
 }
 
-.card-text:hover {
-  filter: none
+.card-text-hover {
+  padding: 7px;
+  position: absolute;
+  bottom: 5px;
+  filter: none;
+  transition: filter 250ms ease-out;
+  z-index: 1;
 }
 
 .card-image {
-  background: grey;
+  max-width: "200px";
+  max-height: "300px";
   width: 100%;
   height: 100%;
+  transform: scale( 1 );
   transition: all 250ms ease-out;
 }
 
-.card-image:hover {
-  transform: scale( 0.9 )
+.card-image-hover {
+  max-width: "200px";
+  max-height: "300px";
+  width: 100%;
+  height: 100%;
+  transform: scale( 0.9 );
+  transition: all 250ms ease-out;
 }

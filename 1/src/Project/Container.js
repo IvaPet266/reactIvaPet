@@ -1,18 +1,33 @@
 import React, { useEffect, useState } from 'react'
 
-export default function Container( props ) {
+let textHoverInst = 'card-text'
+let imageHoverInst = 'card-image'
 
+function mouseIn ( ) {
+    textHoverInst += 'hover';
+    imageHoverInst += 'hover';
+    console.log('In');
+}
+function mouseOut ( ) {
+    textHoverInst = 'card-text';
+    imageHoverInst = 'card-image';
+    console.log('Out');
+}
+
+export default function Container( props ) {
+    
     const [ background, setBackground ] = useState( "#5E3F89" )
 
 
-    useEffect(() => {
-        const img = new Image()
-        img.src = props.img[ 0 ]
+    // useEffect(() => {
+    //     const img = new Image()
+    //     img.src = props.img[ 0 ]
 
-        setBackground( props.img[ 1 ] )
+    //     // setBackground( props.img[ 1 ] )
 
-        // setPortrait( img.width < img.height )
-    })
+    //     // setPortrait( img.width < img.height )
+    // })
+
 
     return (
         <div style={{
@@ -22,21 +37,26 @@ export default function Container( props ) {
             minHeight: "200px",
             maxHeight: "300px",
             position: "relative",
-            overflow: "hidden",
+            // overflow: "hidden",
             borderRadius: "20px",
-            background: background,
-            display: "flex",
+            background: "grey",
+            display: "flex", /* ? */
         }}>
-            <div className='card-text'>
+            <div onMouseEnter={ () => { mouseIn( 'text' ) } }
+                onMouseLeave={ () => { mouseOut( 'text' ) } }
+                className={ textHoverInst }>
                 <h5 style={{ position: "absolute", bottom: "0px" }}>Heading</h5>
                 <span>description</span>
                 <button></button>
             </div>
-            <img className="card-image" style={{             
+            <img 
+                onMouseEnter={ () => { mouseIn( 'image' ) } }
+                onMouseLeave={ () => { mouseOut( 'image' ) } }
+                className={ imageHoverInst } style={{   
                 objectFit: "cover",
-                objectPosition: "80% 60%",
+                objectPosition: "center center",
                 borderRadius: "20px"
-            }} src={ props.img[ 0 ] }></img>
+            }} src={ props.img }></img>
         </div>
     )
 }
