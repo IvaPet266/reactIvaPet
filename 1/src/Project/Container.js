@@ -3,15 +3,15 @@ import React, { useEffect, useState } from 'react'
 let textHoverInst = 'card-text'
 let imageHoverInst = 'card-image'
 
-function mouseIn ( ) {
-    textHoverInst += 'hover';
-    imageHoverInst += 'hover';
-    console.log('In');
+function mouseIn () {
+    textHoverInst = 'card-text-hover';
+    imageHoverInst = 'card-image-hover';
+    console.log( `IN: ${ textHoverInst } | ${ imageHoverInst }` );
 }
-function mouseOut ( ) {
+function mouseOut () {
     textHoverInst = 'card-text';
     imageHoverInst = 'card-image';
-    console.log('Out');
+    console.log( `OUT: ${ textHoverInst } | ${ imageHoverInst }` );
 }
 
 export default function Container( props ) {
@@ -42,16 +42,16 @@ export default function Container( props ) {
             background: "grey",
             display: "flex", /* ? */
         }}>
-            <div onMouseEnter={ () => { mouseIn( 'text' ) } }
-                onMouseLeave={ () => { mouseOut( 'text' ) } }
+            <div onMouseEnter={ () => { mouseIn() } }
+                onMouseLeave={ () => { mouseOut() } }
                 className={ textHoverInst }>
                 <h5 style={{ position: "absolute", bottom: "0px" }}>Heading</h5>
                 <span>description</span>
                 <button></button>
             </div>
             <img 
-                onMouseEnter={ () => { mouseIn( 'image' ) } }
-                onMouseLeave={ () => { mouseOut( 'image' ) } }
+                onMouseEnter={ () => { mouseIn() } }
+                onMouseLeave={ () => { mouseOut() } }
                 className={ imageHoverInst } style={{   
                 objectFit: "cover",
                 objectPosition: "center center",
