@@ -58,7 +58,7 @@
   width: 70px;
   background: #DBC1FF;
   border: none;
-  margin: 8px
+  margin: 8px;
 }
 
 .icon-btn-normal:hover {
@@ -69,13 +69,13 @@
 
 }
 
-.card-text {
+/* .card-text {
   padding: 7px;
   position: absolute;
   bottom: 5px;
+  z-index: 1;
   filter: blur( 50px );
   transition: filter 250ms ease-out;
-  z-index: 1;
 }
 
 .card-text-hover {
@@ -85,7 +85,7 @@
   filter: none;
   transition: filter 250ms ease-out;
   z-index: 1;
-}
+} */
 
 .card-image {
   max-width: "200px";

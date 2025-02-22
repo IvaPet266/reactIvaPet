@@ -1,5 +1,5 @@
-import React from 'react'
-import BaseScreen from './BaseScreen'
+import React from 'react';
+import BaseScreen from './BaseScreen';
 
 export default function ScreenNewPost( props ) {
 
@@ -9,4 +9,4 @@ export default function ScreenNewPost( props ) {
     <div style={{ background:"red" }}>ScreenNewPost</div>
     </BaseScreen>
   )
-}
+};

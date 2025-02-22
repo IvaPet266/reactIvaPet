@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from 'react'
-import theme from '../styles.json'
+import React, { createContext, useContext, useState } from 'react';
+import theme from '../styles.json';
 
 
-const color_theme = createContext( theme )
+const color_theme = createContext( theme );
 
 
 export default function BaseScreen( props ) {
@@ -14,5 +14,5 @@ export default function BaseScreen( props ) {
         <button onClick={ () => setColor( props.background ) }></button>
     </div>
   )
-}
+};
  

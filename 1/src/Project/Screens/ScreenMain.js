@@ -1,6 +1,6 @@
-import React from 'react'
-import BaseScreen from './BaseScreen'
-import Scroll from '../Scroll'
+import React from 'react';
+import BaseScreen from './BaseScreen';
+import Scroll from '../Scroll';
 
 export default function ScreenMain( props ) {
 
@@ -11,4 +11,4 @@ export default function ScreenMain( props ) {
       <Scroll/>
     </BaseScreen>
   )
-}
+};

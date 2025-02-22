@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { useScreen } from './Screens/ProviderScreen'
-import newPostIconNormal from './imgs/newPostIcon-normal.svg'
-import newPostIconActive from './imgs/newPostIcon-active.svg'
-import searchIconNormal from './imgs/searchIcon-normal.svg'
-import searchIconActive from './imgs/searchIcon-active.svg'
-import profileIconNormal from './imgs/profileIcon-normal.svg'
-import profileIconActive from './imgs/profileIcon-active.svg'
+import React, { useState } from 'react';
+import { useScreen } from './Screens/ProviderScreen';
+import newPostIconNormal from './imgs/newPostIcon-normal.svg';
+import newPostIconActive from './imgs/newPostIcon-active.svg';
+import searchIconNormal from './imgs/searchIcon-normal.svg';
+import searchIconActive from './imgs/searchIcon-active.svg';
+import profileIconNormal from './imgs/profileIcon-normal.svg';
+import profileIconActive from './imgs/profileIcon-active.svg';
 
 
 
@@ -15,7 +15,7 @@ let profileIcon = profileIconNormal;
 
 
 export default function Menu( props ) {
-  const [ lang, setLang ] = useState( 'rus' )
+  const [ lang, setLang ] = useState( 'rus' );
   const text = {
     "eng": {
       "mainScreen": "Main",
@@ -29,22 +29,25 @@ export default function Menu( props ) {
       "subscriptionsScreen": "Подписки",
       "discussionScreen": "Обсуждение"
     }
-  }
+  };
 
   function clickedNewPost ( screen ) {
-    newPostIcon = newPostIcon == newPostIconNormal ? newPostIconActive : newPostIconNormal
+    newPostIcon = newPostIcon == newPostIconNormal ? newPostIconActive : newPostIconNormal;
+    console.log( newPostIcon );
     props.setScreen( screen );
-  }
+  };
 
   function clickedSearch ( screen ) {
-    searchIcon = searchIcon == searchIconNormal ? searchIconActive : searchIconNormal
+    searchIcon = searchIcon == searchIconNormal ? searchIconActive : searchIconNormal;
+    console.log( searchIcon );
     props.setScreen( screen );
-  }
+  };
 
   function clickedProfile ( screen ) {
-    profileIcon = profileIcon == profileIconNormal ? profileIconActive : profileIconNormal
+    profileIcon = profileIcon == profileIconNormal ? profileIconActive : profileIconNormal;
+    console.log( profileIcon );
     props.setScreen( screen );
-  }
+  };
 
   return (
     <div id="menu" style={{ background: "#DBC1FF", padding: ""}}>
@@ -62,30 +65,31 @@ export default function Menu( props ) {
       </Button>
     </div>
   )
-}
+};
 
 
 
 export function Button( props ) {
 
-  const {screen, setScreen} = useScreen()
+  const { screen, setScreen } = useScreen();
 
-  let className
-  switch (screen) {
-    case props.id: className = "btn-dark"; break
-    default: className = "btn-normal"; break
-  }
+  let className;
+
+  switch ( screen ) {
+    case props.id: className = "btn-dark"; break;
+    default: className = "btn-normal"; break;
+  };
   
-  if (props.style_ == true) {className = "icon-btn-normal"} 
+  if ( props.style_ == true ) { className = "icon-btn-normal" };
   
   return (
-    <button onClick={() => setScreen(props.id)} className={ className }>{ props.children }</button>
+    <button onClick={ () => setScreen( props.id ) } className={ className }>{ props.children }</button>
   )
-}
+};
 
 export function Image( props ) {
   return (
     <img src={ props.src_ } style={{ height: '70px', width: '70px', margin: 0, padding: 0, stroke: "none" }}></img>
   )
-}
+};
 

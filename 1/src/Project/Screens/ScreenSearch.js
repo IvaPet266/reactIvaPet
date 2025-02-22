@@ -1,5 +1,5 @@
-import React from 'react'
-import BaseScreen from './BaseScreen'
+import React from 'react';
+import BaseScreen from './BaseScreen';
 
 export default function ScreenSearch( props ) {
 

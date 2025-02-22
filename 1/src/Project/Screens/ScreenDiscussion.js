@@ -1,5 +1,5 @@
-import React from 'react'
-import BaseScreen from './BaseScreen'
+import React from 'react';
+import BaseScreen from './BaseScreen';
 
 export default function ScreenDiscussion( props ) {
 
@@ -9,4 +9,4 @@ export default function ScreenDiscussion( props ) {
     <div style={{ background:"orange" }}>ScreenDiscussion</div>
     </BaseScreen>
   )
-}
+};
