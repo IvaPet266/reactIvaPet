@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
 import { useScreen } from './Screens/ProviderScreen';
-import newPostIconNormal from './imgs/newPostIcon-normal.svg';
-import newPostIconActive from './imgs/newPostIcon-active.svg';
-import searchIconNormal from './imgs/searchIcon-normal.svg';
-import searchIconActive from './imgs/searchIcon-active.svg';
-import profileIconNormal from './imgs/profileIcon-normal.svg';
-import profileIconActive from './imgs/profileIcon-active.svg';
 
-
-
-let newPostIcon = newPostIconNormal;
-let searchIcon = searchIconNormal;
-let profileIcon = profileIconNormal;
 
 
 export default function Menu( props ) {
   const [ lang, setLang ] = useState( 'rus' );
+
+
   const text = {
     "eng": {
       "mainScreen": "Main",
@@ -31,31 +22,17 @@ export default function Menu( props ) {
     }
   };
 
-  function clickedNewPost ( screen ) {
-    newPostIcon = newPostIcon == newPostIconNormal ? newPostIconActive : newPostIconNormal;
-    console.log( newPostIcon );
-    props.setScreen( screen );
-  };
-
-  function clickedSearch ( screen ) {
-    searchIcon = searchIcon == searchIconNormal ? searchIconActive : searchIconNormal;
-    console.log( searchIcon );
-    props.setScreen( screen );
-  };
-
-  function clickedProfile ( screen ) {
-    profileIcon = profileIcon == profileIconNormal ? profileIconActive : profileIconNormal;
-    console.log( profileIcon );
-    props.setScreen( screen );
-  };
 
   return (
     <div id="menu" style={{ background: "#DBC1FF", padding: ""}}>
       <Button onClick={ () => props.setScreen( "main" ) } id="main" style_={ false } >Main</Button>
       <Button onClick={ () => props.setScreen( "contests" ) } id="contests" style_={ false } >Contests</Button>
       <Button onClick={ () => props.setScreen( "discussion" ) } id="discussion" style_={ false } >Discussion</Button>
-      <Button onClick={ () => clickedNewPost( "newPost" ) } id="newPost" style_={ true } >
-        <img src={ newPostIcon }/>
+      <Button onClick={ () => props.setScreen( "newPost" ) } id="newPost" style_={ true } style={{background: "#DBC1FF"}}>
+        <Image styles={[{fill: fill, pointerEvents: "none", transition: "300ms ease-out"}, {stroke: stroke, pointerEvents: "none", transition: "300ms ease-out"}]} // TODO
+          ds={{"1": ["M35 67.5C52.9493 67.5 67.5 52.9493 67.5 35C67.5 17.0507 52.9493 2.5 35 2.5C17.0507 2.5 2.5 17.0507 2.5 35C2.5 52.9493 17.0507 67.5 35 67.5Z"], 
+          "2": ["M35 22V48M22 35H48M67.5 35C67.5 52.9493 52.9493 67.5 35 67.5C17.0507 67.5 2.5 52.9493 2.5 35C2.5 17.0507 17.0507 2.5 35 2.5C52.9493 2.5 67.5 17.0507 67.5 35Z", "stroke-width"="4", "stroke-linecap"="round", "stroke-linejoin"="round"]}}
+      />
       </Button>
       <Button onClick={ () => clickedSearch( "search" ) } id="search" style_={ true } > 
         <img src={ searchIcon }/>
@@ -87,9 +64,23 @@ export function Button( props ) {
   )
 };
 
-export function Image( props ) {
-  return (
-    <img src={ props.src_ } style={{ height: '70px', width: '70px', margin: 0, padding: 0, stroke: "none" }}></img>
-  )
-};
 
+export function Image(props) {
+  const [ fill, setFill ] = useState( "#DBC1FF" );
+  const [ stroke, setStroke ] = useState( "#5E3F89" )
+  return (
+    <svg 
+      onMouseEnter={ () => {
+        setFill( "#5E3F89" );
+        setStroke( "white" )
+      }}
+      onMouseOut={ () => {
+        setFill( "#DBC1FF" );
+        setStroke( "#5E3F89" )
+      }}
+      style={{background: "#DBC1FF"}} width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {props.styles.map( ( value, index ) => <path style={ value } />)} //TODO
+      
+    </svg>
+  )
+}
