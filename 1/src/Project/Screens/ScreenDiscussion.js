@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseScreen from './BaseScreen';
+import BaseScreen from '../Components/BaseScreen';
 
 export default function ScreenDiscussion( props ) {
 

@@ -5,19 +5,11 @@ export default function SVGButton( props ) {
 
     const { screen, setScreen } = useScreen();
 
-    function clicked () {
-        setScreen( props.id );
-        if ( screen == props.id ) {
-            setDefaultBg( "#DBC1FF" );
-            setDefaultStroke( "#5E3F89" );
-        } else {
-            setDefaultBg( "#5E3F89" );
-            setDefaultStroke( "white" );
-        }
-    };
+    const bg = useRef( props.id == screen? "#5E3F89": "#DBC1FF")
+    const stroke = useRef( props.id == screen? "white": "#5E3F89")
 
-    const [ defaultBg, setDefaultBg ] = useState( "#DBC1FF" );
-    const [ defaultStroke, setDefaultStroke ] = useState( "#5E3F89" );
+    const [ defaultBg, setDefaultBg ] = useState( bg.current );
+    const [ defaultStroke, setDefaultStroke ] = useState( stroke.current );
 
     const [ bgColor, setBgColor ] = useState( defaultBg );
     const [ strokeColor, setStrokeColor ] = useState( defaultStroke );
@@ -25,7 +17,7 @@ export default function SVGButton( props ) {
 
     return (
         <button
-            onClick={ () =>  clicked() }
+            onClick={ () => setScreen( props.id ) }
             style={{
                 backgroundColor: "#DBC1FF",
                 margin: "8px",
@@ -55,21 +47,11 @@ export function SVGButton2Paths ( props ) {
 
     const { screen, setScreen } = useScreen();
 
-    const [ isClicked, setIsClicked ] = useState( true );
+    const bg = useRef( props.id == screen? "#5E3F89": "#DBC1FF")
+    const stroke = useRef( props.id == screen? "white": "#5E3F89")
 
-    function clicked () {
-        setScreen( props.id );
-        if ( screen == props.id ) {
-            setDefaultBg( "#DBC1FF" );
-            setDefaultStroke( "#5E3F89" );
-        } else {
-            setDefaultBg( "#5E3F89" );
-            setDefaultStroke( "white" );
-        }
-    };
-
-    const [ defaultBg, setDefaultBg ] = useState( "#DBC1FF" );
-    const [ defaultStroke, setDefaultStroke ] = useState( "#5E3F89" );
+    const [ defaultBg, setDefaultBg ] = useState( bg.current );
+    const [ defaultStroke, setDefaultStroke ] = useState( stroke.current );
 
     const [ bgColor, setBgColor ] = useState( defaultBg );
     const [ strokeColor, setStrokeColor ] = useState( defaultStroke );
@@ -77,9 +59,9 @@ export function SVGButton2Paths ( props ) {
 
     return (
         <button
-            onClick={ () => clicked() }
+            onClick={ () => setScreen( props.id ) }
             style={{
-                backgroundColor: "#DBC1FF",
+                background: "transparent",
                 margin: "8px",
                 transition: "all 300ms ease-out",
                 border: "none",
