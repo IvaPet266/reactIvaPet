@@ -44,12 +44,12 @@ export default function Container( props ) {
             onMouseEnter={ () => {
                     setFocused( true );
                     setFilter( "brightness(30%) saturate(40%)" )
-                    console.log('enter', style);
+                    console.log( 'enter', style );
                 }}
             onMouseOut={ () => {
                     setFocused( false );
                     setFilter( "none" );
-                    console.log('leave', style);
+                    console.log( 'leave', style );
                 }}>
             
             <div 
