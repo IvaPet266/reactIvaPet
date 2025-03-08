@@ -7,27 +7,6 @@ export default function Container( props ) {
 
     const margin = 10;
 
-    const defaultStyle = {
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        objectPosition: "center center",
-        borderRadius: "20px",
-        transition: "all 300ms ease-out",
-        opacity: 1
-    }
-
-    let style = {   
-        width: "100%",
-        height: "100%",
-        objectFit: "cover",
-        objectPosition: "center center",
-        borderRadius: "20px",
-        transition: "all 300ms ease-out",
-        opacity: 1,
-        pointerEvents: 'none',        
-    };
-
     return (
         <div 
             style={{
@@ -44,12 +23,12 @@ export default function Container( props ) {
             onMouseEnter={ () => {
                     setFocused( true );
                     setFilter( "brightness(30%) saturate(40%)" )
-                    console.log( 'enter', style );
+                    console.log( 'enter' );
                 }}
             onMouseOut={ () => {
                     setFocused( false );
                     setFilter( "none" );
-                    console.log( 'leave', style );
+                    console.log( 'leave' );
                 }}
             onClick={() => {console.log("card")}}
             >            
@@ -67,17 +46,40 @@ export default function Container( props ) {
                     flexDirection: "row",
                 }}>
                 <div style={{ display: "flex", flexDirection: "column", padding: "3px" }}>
-                    <h5 style={{ position: "absolute", bottom: "10px", color: "white" }}>Heading</h5>
-                    <span style={{ color: "white" }}>UserName</span>
+                    <h5 style={{ position: "absolute", bottom: "10px", color: "white" }}>{ props.title }</h5>
+                    <span style={{ color: "white" }}>{ props.author }</span>
                     <button></button>
                 </div>
                 <img style={{ 
                     position: "absolute", right: "20px", height: "30px", width: "30px",
                     backgroundColor: "white", borderRadius: "25px" }}/>
             </div>
-            <img 
-                style={{ ...style, filter: filter }} 
-                src={ props.img }></img>
+            { () => {
+                if ( props.category == "ARTWORK" ) {
+                    return <img 
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            objectPosition: "center center",
+                            borderRadius: "20px",
+                            transition: "all 300ms ease-out",
+                            opacity: 1,
+                            pointerEvents: 'none',        
+                            filter: filter 
+                        }} 
+                        src={ props.img }/>
+                } else return <div style={{ width: "100%",
+                                height: "100%",
+                                transition: "all 300ms ease-out",
+                                borderRadius: "20px",
+                                opacity: 1,
+                                pointerEvents: 'none',        
+                                filter: filter }}>
+                                    <p>{ props.text_content }</p>
+                                </div>
+            }}
+            
         </div>
     )
 };
