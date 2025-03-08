@@ -50,21 +50,30 @@ export default function Container( props ) {
                     setFocused( false );
                     setFilter( "none" );
                     console.log( 'leave', style );
-                }}>
-            
+                }}
+            onClick={() => {console.log("card")}}
+            >            
             <div 
                 style={{ 
                     padding: "7px",
                     position: "absolute",
                     bottom: "5px",
+                    width: "100%",
                     zIndex: 1,
                     pointerEvents: 'none',
                     transition: "opacity 300ms ease-out",
-                    opacity: Number( focused )
+                    opacity: Number( focused ),
+                    display: "flex",
+                    flexDirection: "row",
                 }}>
-                <h5 style={{ position: "absolute", bottom: "0px", color: "white" }}>Heading</h5>
-                <span style={{ color: "white" }}>Author</span>
-                <button></button>
+                <div style={{ display: "flex", flexDirection: "column", padding: "3px" }}>
+                    <h5 style={{ position: "absolute", bottom: "10px", color: "white" }}>Heading</h5>
+                    <span style={{ color: "white" }}>UserName</span>
+                    <button></button>
+                </div>
+                <img style={{ 
+                    position: "absolute", right: "20px", height: "30px", width: "30px",
+                    backgroundColor: "white", borderRadius: "25px" }}/>
             </div>
             <img 
                 style={{ ...style, filter: filter }} 
