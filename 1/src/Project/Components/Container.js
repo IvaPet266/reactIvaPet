@@ -4,6 +4,8 @@ export default function Container( props ) {
     
     const [ focused, setFocused ] = useState( false );
     const [ filter, setFilter ] = useState( "none" );
+    const [ textFilter, setTextFilter ] = useState( "none" );
+    const [ textStyle, setTextStyle ] = useState( { color: "black", background: "transparent" } );
 
     const margin = 10;
 
@@ -23,15 +25,18 @@ export default function Container( props ) {
             onMouseEnter={ () => {
                     setFocused( true );
                     setFilter( "brightness(30%) saturate(40%)" )
+                    setTextFilter( "scale(80%)" );                             //! 
+                    setTextStyle( { color: "lightgrey", background: "black"})  //! 
                     console.log( 'enter' );
                 }}
             onMouseOut={ () => {
                     setFocused( false );
                     setFilter( "none" );
+                    setTextFilter( "none" );                                       //!
+                    setTextStyle( { color: "black", background: "transparent" } ); //!
                     console.log( 'leave' );
                 }}
-            onClick={() => {console.log("card")}}
-            >            
+            onClick={() => {console.log("card")}}>            
             <div 
                 style={{ 
                     padding: "7px",
@@ -54,7 +59,7 @@ export default function Container( props ) {
                     position: "absolute", right: "20px", height: "30px", width: "30px",
                     backgroundColor: "white", borderRadius: "25px" }}/>
             </div>
-            { () => {
+            { (() => {
                 if ( props.category == "ARTWORK" ) {
                     return <img 
                         style={{
@@ -69,17 +74,21 @@ export default function Container( props ) {
                             filter: filter 
                         }} 
                         src={ props.img }/>
-                } else return <div style={{ width: "100%",
-                                height: "100%",
-                                transition: "all 300ms ease-out",
-                                borderRadius: "20px",
-                                opacity: 1,
-                                pointerEvents: 'none',        
-                                filter: filter }}>
-                                    <p>{ props.text_content }</p>
-                                </div>
-            }}
-            
+                } else {
+                    let text;
+                    if ( props.text_content.length > 310 ) text = `${ props.text_content.slice( 0, 307 ) }...`
+                    else text = props.text_content;
+                    return <div style={{ width: "90%",
+                        height: "100%",
+                        transition: "all 300ms ease-out",
+                        borderRadius: "20px",
+                        padding: "5px",
+                        opacity: 1,
+                        pointerEvents: 'none',  
+                        alignContent: "center",      
+                        filter: textFilter,
+                        textDecorationStyle: textStyle }}>{ text }</div>}
+            })() }
         </div>
     )
 };

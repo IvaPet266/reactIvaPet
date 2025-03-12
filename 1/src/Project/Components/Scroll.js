@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, use } from 'react';
 import Container from './Container';
 import cat from  '../imgs/cards/cat.jpg';
 import cat1 from '../imgs/cards/cat1.jpg';
@@ -48,7 +48,7 @@ export default function Scroll( props ) {
     useEffect( () => {
         if ( CARDS !== undefined && !cardsLoaded ) {
             setCardsLoaded( true ); 
-            console.log("loaded"); console.log(CARDS.map( (value, index)=> value))
+            console.log("loaded"); console.log(CARDS.map( (value, index) => value ))
         }
     }, [ cardsLoaded ])
    
@@ -56,30 +56,27 @@ export default function Scroll( props ) {
     // const CARDS = [
     //     cat,  dog, cat1, dog1, cat2,  cat, dog, cat1, dog1, cat2, 
     // ];
-   
-    if ( cardsLoaded ) {
-    return <div 
-            ref={ ref }
-            style={{
-                padding: `0 ${padding}`,
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center"
-            }}>
-            {() => {
-                if ( CARDS )
-                CARDS.map( ( value, index ) => <Container 
-                        img={ value[ "image" ] } key={ index } 
-                        title={ value[ "title" ] } author={ value[ "author" ] }
-                        category={ value[ "category" ] }
-                        text_content={ value[ "text_content" ] }/>
-                    )
-                }}
-        </div>
-    }
-    else {
-        return (
-        <div>hhb</div>
-        )
+
+    switch ( cardsLoaded ) {
+        case true:
+            console.log("cards");
+            return <div 
+                    ref={ ref }
+                    style={{
+                        padding: `0 ${ padding }`,
+                        display: "flex",
+                        flexWrap: "wrap",
+                        justifyContent: "center"
+                    }}>
+                    { CARDS.map( ( value, index ) => <Container 
+                                key={ index } img={ value[ "image" ] } 
+                                title={ value[ "title" ] } author={ value[ "author" ] }
+                                category={ value[ "category" ] }
+                                text_content={ value[ "text_content" ] }/> ) }
+                </div>
+            break;
+        default:
+            return <p>dff</p>
+            break;
     }
 };
