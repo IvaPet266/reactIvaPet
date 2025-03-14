@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect, use } from 'react';
-import Container from './Container';
+import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
+import Container from './Card';
 import cat from  '../imgs/cards/cat.jpg';
 import cat1 from '../imgs/cards/cat1.jpg';
 import cat2 from '../imgs/cards/cat2.jpg';
@@ -7,13 +7,13 @@ import dog from '../imgs/cards/dog.jpg';
 import dog1 from '../imgs/cards/dog1.jpg';
 
 
-let CARDS;
 
 export default function Scroll( props ) {
     const [ cardWidth, setCardWidth ] = useState( "200px" );
     const [ padding, setPadding ] = useState( null );
-    const [ cardsLoaded, setCardsLoaded ] = useState( false );
+    // const [ cardsLoaded, setCardsLoaded ] = useState( false );
     const ref = useRef( null );
+    const [ CARDS, setCARDS ] = useState( null )
 
     const zoomHandle = () => {
         const { width } = ref.current.getBoundingClientRect();
@@ -25,12 +25,12 @@ export default function Scroll( props ) {
         setCardWidth( `${w}px` );
     };
 
-    useEffect(() => {  
-        window.visualViewport.onresize = zoomHandle;
+    useLayoutEffect(() => {  
+        window.visualViewport.addEventListener( "resize", zoomHandle );
         return () => {
-            window.visualViewport.onresize = null;
+            window.visualViewport.removeEventListener( "resize", zoomHandle );
         }
-    });
+    }, []);
 
     useEffect(() => {(
         async () => {
@@ -40,24 +40,24 @@ export default function Scroll( props ) {
             }
             catch ( error ) { console.warn( error ); }
         })().then( data => {
-            CARDS = Object.values(data);
+            setCARDS( Object.values( data ) );
         }
-        )}
+        )}, []
     );
 
-    useEffect( () => {
-        if ( CARDS !== undefined && !cardsLoaded ) {
-            setCardsLoaded( true ); 
-            console.log("loaded"); console.log(CARDS.map( (value, index) => value ))
-        }
-    }, [ cardsLoaded ])
+    // useEffect( () => {
+    //     if ( CARDS !== undefined && !cardsLoaded ) {
+    //         setCardsLoaded( true ); 
+    //         console.log("loaded"); console.log(CARDS.map( (value, index) => value ))
+    //     }
+    // }, [ cardsLoaded ])
    
 
     // const CARDS = [
     //     cat,  dog, cat1, dog1, cat2,  cat, dog, cat1, dog1, cat2, 
     // ];
 
-    switch ( cardsLoaded ) {
+    switch ( CARDS !== null ) {
         case true:
             console.log("cards");
             return <div 
@@ -74,9 +74,7 @@ export default function Scroll( props ) {
                                 category={ value[ "category" ] }
                                 text_content={ value[ "text_content" ] }/> ) }
                 </div>
-            break;
         default:
             return <p>dff</p>
-            break;
     }
 };

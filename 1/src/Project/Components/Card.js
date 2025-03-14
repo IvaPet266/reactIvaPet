@@ -24,16 +24,16 @@ export default function Container( props ) {
             }}    
             onMouseEnter={ () => {
                     setFocused( true );
-                    setFilter( "brightness(30%) saturate(40%)" )
-                    setTextFilter( "scale(80%)" );                             //! 
-                    setTextStyle( { color: "lightgrey", background: "black"})  //! 
+                    setFilter( "brightness(30%) saturate(40%)" );
+                    setTextFilter( "brightness(30%) contrast(30%)" );                       
+                    setTextStyle( { color: "lightgrey"})
                     console.log( 'enter' );
                 }}
             onMouseOut={ () => {
                     setFocused( false );
                     setFilter( "none" );
-                    setTextFilter( "none" );                                       //!
-                    setTextStyle( { color: "black", background: "transparent" } ); //!
+                    setTextFilter( "none" );                                    
+                    setTextStyle( { color: "black" } );
                     console.log( 'leave' );
                 }}
             onClick={() => {console.log("card")}}>            
@@ -85,9 +85,12 @@ export default function Container( props ) {
                         padding: "5px",
                         opacity: 1,
                         pointerEvents: 'none',  
-                        alignContent: "center",      
-                        filter: textFilter,
-                        textDecorationStyle: textStyle }}>{ text }</div>}
+                        alignContent: "center",     
+                        filter: textFilter}}>
+                            <span style={{ 
+                                transition: "all 300ms ease-out", 
+                                ...textStyle }}>{ text }</span>
+                        </div>}
             })() }
         </div>
     )
