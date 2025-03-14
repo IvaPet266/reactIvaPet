@@ -13,12 +13,12 @@ export default function App() {
     const {screen, setScreen} = useScreen();
 
     switch (screen) {
-        case "contests":     return <ScreenContests><Menu setScreen={() => {console.log(this.style.height), setScreen }}/></ScreenContests>
-        case "discussion":   return <ScreenDiscussion><Menu setScreen={ setScreen }/></ScreenDiscussion>
-        case "newPost":      return <ScreenNewPost><Menu setScreen={ setScreen }/></ScreenNewPost>
-        case "profile":      return <ScreenProfile><Menu setScreen={ setScreen }/></ScreenProfile>
-        case "search":       return <ScreenSearch><Menu setScreen={ setScreen }/></ScreenSearch>
-        default:             return <ScreenMain><Menu setScreen={ setScreen }/></ScreenMain>
+        case "contests":   return <ScreenContests><Menu setScreen={() => {console.log(this.style.height), setScreen }}/></ScreenContests>
+        case "discussion": return <ScreenDiscussion><Menu setScreen={ setScreen }/></ScreenDiscussion>
+        case "newPost":    return <ScreenNewPost><Menu setScreen={ setScreen }/></ScreenNewPost>
+        case "profile":    return <ScreenProfile><Menu setScreen={ setScreen }/></ScreenProfile>
+        case "search":     return <ScreenSearch><Menu setScreen={ setScreen }/></ScreenSearch>
+        default:           return <ScreenMain><Menu setScreen={ setScreen }/></ScreenMain>
     }
 }
 

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
+// import useSelector from 'react-redux';   //!
 import Container from './Card';
 import cat from  '../imgs/cards/cat.jpg';
 import cat1 from '../imgs/cards/cat1.jpg';
@@ -11,9 +12,10 @@ import dog1 from '../imgs/cards/dog1.jpg';
 export default function Scroll( props ) {
     const [ cardWidth, setCardWidth ] = useState( "200px" );
     const [ padding, setPadding ] = useState( null );
-    // const [ cardsLoaded, setCardsLoaded ] = useState( false );
+    const [ CARDS, setCARDS ] = useState( null );
     const ref = useRef( null );
-    const [ CARDS, setCARDS ] = useState( null )
+
+    // const textColor = useSelector( ( state ) => state.colorTheme.fill_inactive ); //!
 
     const zoomHandle = () => {
         const { width } = ref.current.getBoundingClientRect();
@@ -45,18 +47,6 @@ export default function Scroll( props ) {
         )}, []
     );
 
-    // useEffect( () => {
-    //     if ( CARDS !== undefined && !cardsLoaded ) {
-    //         setCardsLoaded( true ); 
-    //         console.log("loaded"); console.log(CARDS.map( (value, index) => value ))
-    //     }
-    // }, [ cardsLoaded ])
-   
-
-    // const CARDS = [
-    //     cat,  dog, cat1, dog1, cat2,  cat, dog, cat1, dog1, cat2, 
-    // ];
-
     switch ( CARDS !== null ) {
         case true:
             console.log("cards");
@@ -75,6 +65,6 @@ export default function Scroll( props ) {
                                 text_content={ value[ "text_content" ] }/> ) }
                 </div>
         default:
-            return <p>dff</p>
+            return <p style={{ color: "white" }}>Wait a minute!</p> //!
     }
 };

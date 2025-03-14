@@ -4,24 +4,6 @@ import SVGButton, { SVGButton2Paths } from './SVGButtons';
 
 
 export default function Menu( props ) {
-  const [ lang, setLang ] = useState( 'rus' );
-  const [ NPfill, setNPfill ] = useState( "#DBC1FF" );
-  const [ NPstroke, setNPstroke ] = useState( "#5E3F89" );
-  const [ Sstroke, setSstroke ] = useState( "#5E3F89" );
-  const [ Sfill, setSfill ] = useState( "#DBC1FF" )
-  const [ Pstroke, setPstroke ] = useState( "#5E3F89" );
-  const [ Pfill, setPfill ] = useState( 1 );
-
-
-  const searchRects = [
-    <rect style={{ pointerEvents: "none" }} x="2" y="2" width="66" height="66" rx="18" fill="#5E3F89"/>, 
-    <rect style={{ pointerEvents: "none" }} x="2" y="2" width="66" height="66" rx="18" stroke="white" strokeWidth="4"/>
-  ]
-
-  const profileRects = [
-    <rect style={{ pointerEvents: "none" }} x="2" y="2" width="66" height="66" rx="15" fill="#5E3F89"/>,
-    <rect style={{ pointerEvents: "none" }} x="2" y="2" width="66" height="66" rx="15" stroke="white" strokeWidth="4"/>
-  ]
   
   const text = {
     "eng": {

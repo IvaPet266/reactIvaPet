@@ -1,12 +1,18 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react';
 import { useScreen } from '../Screens/ProviderScreen';
+// import useSelector from 'react-redux';                                                   //!
 
 export default function SVGButton( props ) {
 
     const { screen, setScreen } = useScreen();
 
-    const bg = useRef( props.id == screen? "#5E3F89": "#DBC1FF")
-    const stroke = useRef( props.id == screen? "white": "#5E3F89")
+    // const bg_inactive = useSelector( ( state ) => state.colorTheme.fill_inactive );       //!   
+    // const bg_active = useSelector( ( state ) => state.colorTheme.fill_active );           //!
+    // const stroke_inactive = useSelector( ( state ) => state.colorTheme.stroke_inactive ); //!           
+    // const stroke_active = useSelector( ( state ) => state.colorTheme.stroke_active );     //!       
+
+    // const bg = useRef( props.id == screen? bg_active: bg_inactive )                       //!
+    // const stroke = useRef( props.id == screen? stroke_active: stroke_inactive )           //!
 
     const [ defaultBg, setDefaultBg ] = useState( bg.current );
     const [ defaultStroke, setDefaultStroke ] = useState( stroke.current );
@@ -19,7 +25,7 @@ export default function SVGButton( props ) {
         <button
             onClick={ () => setScreen( props.id ) }
             style={{
-                backgroundColor: "#DBC1FF",
+                backgroundColor: bg_inactive,  //!
                 margin: "8px",
                 transition: "all 300ms ease-out",
                 border: "none",
@@ -47,8 +53,13 @@ export function SVGButton2Paths ( props ) {
 
     const { screen, setScreen } = useScreen();
 
-    const bg = useRef( props.id == screen? "#5E3F89": "#DBC1FF")
-    const stroke = useRef( props.id == screen? "white": "#5E3F89")
+    // const bg_inactive = useSelector( ( state ) => state.colorTheme.fill_inactive );       //! 
+    // const bg_active = useSelector( ( state ) => state.colorTheme.fill_active );           //! 
+    // const stroke_inactive = useSelector( ( state ) => state.colorTheme.stroke_inactive ); //!
+    // const stroke_active = useSelector( ( state ) => state.colorTheme.stroke_active );     //! 
+
+    // const bg = useRef( props.id == screen? bg_active: bg_inactive );                      //!
+    // const stroke = useRef( props.id == screen? stroke_active: stroke_inactive );          //! 
 
     const [ defaultBg, setDefaultBg ] = useState( bg.current );
     const [ defaultStroke, setDefaultStroke ] = useState( stroke.current );
