@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
-// import useSelector from 'react-redux';   //!
+import useSelector from 'react-redux';   //!
 import Container from './Card';
 import cat from  '../imgs/cards/cat.jpg';
 import cat1 from '../imgs/cards/cat1.jpg';
@@ -15,7 +15,7 @@ export default function Scroll( props ) {
     const [ CARDS, setCARDS ] = useState( null );
     const ref = useRef( null );
 
-    // const textColor = useSelector( ( state ) => state.colorTheme.fill_inactive ); //!
+    const textColor = useSelector( ( state ) => state.colorTheme.fill_inactive ); //!
 
     const zoomHandle = () => {
         const { width } = ref.current.getBoundingClientRect();
@@ -65,6 +65,6 @@ export default function Scroll( props ) {
                                 text_content={ value[ "text_content" ] }/> ) }
                 </div>
         default:
-            return <p style={{ color: "white" }}>Wait a minute!</p> //!
+            return <p style={{ color: textColor }}>Wait a minute!</p> //!
     }
 };
