@@ -1,0 +1,5 @@
+{
+    "buttons" : {"active": "#5E3F89", "default": "#DBC1FF"}, 
+    "texts" : {"active": "#fff", "default": "#5E3F89"},
+    "background" : {"default": "#5E3F89", "1": "grey"}
+}
